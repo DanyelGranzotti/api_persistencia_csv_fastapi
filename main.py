@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
+from fastapi.staticfiles import StaticFiles
 from routers import book_router
 from services.book_service import BookService
 from models.book import Book
@@ -9,6 +10,7 @@ import logging
 app = FastAPI()
 
 app.include_router(book_router.router)
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 logging.basicConfig(filename='app.log', level=logging.INFO, format='%(asctime)s - %(message)s')
 

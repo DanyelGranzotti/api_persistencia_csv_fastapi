@@ -1,5 +1,5 @@
 from fastapi import APIRouter, HTTPException, Query
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, HTMLResponse
 from models.book import Book
 from services.book_service import BookService
 import zipfile
@@ -59,6 +59,11 @@ def get_csv_hash():
     hash_value = sha256_hash.hexdigest()
     logging.info("Hash SHA256 do arquivo CSV: %s", hash_value)
     return {"hash_sha256": hash_value}
+
+@router.get("/interface", response_class=HTMLResponse)
+def get_interface():
+    with open("static/index.html") as f:
+        return HTMLResponse(content=f.read(), status_code=200)
 
 @router.get("/{book_id}", response_model=Book)
 def get_book(book_id: int):

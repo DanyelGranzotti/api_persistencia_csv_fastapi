@@ -9,9 +9,14 @@ Este projeto é parte da disciplina de desenvolvimento de software para persist�
 
 ## Como executar
 1. Clone o repositório:
-2. Para iniciar o servidor, execute o comando:
+2. Instale as dependências:
+```bash
+pip install -r requirements.txt
+```
+3. Para iniciar o servidor, execute o comando:
 ```bash
 python -m uvicorn main:app --reload
 ```
-3. Acesse a documentação da API em http://localhost:8000/docss
+1. Acesse o swagger da API em http://localhost:8000/docs
+2. Acesse o a interface gráfica em http://localhost:8000/livros/interface
 
